@@ -1,0 +1,15 @@
+{
+  "name": "aaaaaaa",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "ui5-task-minifier": "^2.0.0",
+    "wdio-ui5-service": "^3.0.8"
+  }
+}

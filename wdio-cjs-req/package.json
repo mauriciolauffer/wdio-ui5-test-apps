@@ -1,15 +1,15 @@
 {
-  "name": "wdio-cjs",
+  "name": "wdio-cjs-req",
   "version": "0.0.1",
   "private": true,
   "description": "wdi5 test app",
   "author": "Mauricio Lauffer",
   "type": "commonjs",
   "scripts": {
-    "test": "wdio run wdio.conf.cjs --headless",
-    "test:inject": "wdio run wdio-inject.conf.cjs --headless"
+    "test": "wdio run wdio.conf.js --headless",
+    "test:inject": "wdio run wdio-inject.conf.js --headless"
   },
   "devDependencies": {
-    "wdio-ui5-service": "^3.0.2"
+    "wdio-ui5-service": "^3.0.11"
   }
 }

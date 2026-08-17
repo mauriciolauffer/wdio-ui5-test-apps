@@ -5,7 +5,7 @@ const config = {
     baseUrl: "https://ui5.sap.com/1.136.10/test-resources/sap/m/demokit/orderbrowser/webapp/test/mockServer.html",
 
     services: ["ui5"],
-    specs: ["./*.test.cjs"],
+    specs: ["./*.test.js"],
     maxInstances: 1,
     capabilities: [
         {

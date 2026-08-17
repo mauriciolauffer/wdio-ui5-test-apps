@@ -1,3 +1,5 @@
+const { default: _ui5Service } = require("wdio-ui5-service");
+const ui5Service = new _ui5Service();
 const config = {
     wdi5: {
         logLevel: "verbose"
