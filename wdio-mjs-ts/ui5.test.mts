@@ -1,15 +1,6 @@
-const { mock } = require("node:test")
-const { wdi5 } = require("wdio-ui5-service")
+import { wdi5 } from "wdio-ui5-service"
 
 describe("ui5 basic", () => {
-    it("should use the CJS style logger", () => {
-        const logSpy = mock.method(console, "log", () => {})
-        const Logger = wdi5.getLogger("cjs!")
-        Logger.log("Hello CJS World!")
-        expect(logSpy.mock.calls[0].arguments[1]).toContain("cjs!")
-        logSpy.mock.restore()
-    })
-
     it("window should have the right title", async () => {
         const title = await browser.getTitle()
         expect(title).toEqual("Browse Orders")
@@ -44,23 +35,25 @@ describe("ui5 basic", () => {
         expect(isOpen).toBeFalsy()
     })
 
-    it("wdi5 should search and return no results", async () => {
+    it("wdi5 should navigate to not found then nav to root # main page again", async () => {
+        await wdi5.goTo("#wdi5ShouldBeNotFound")
         const selector1 = {
             selector: {
-                id: "container-orderbrowser---master--searchField"
+                controlType: "sap.m.Title",
+                viewName: "sap.ui.demo.orderbrowser.view.NotFound"
             }
         }
-        const search = await browser.asControl(selector1).enterText("NOTHING HERE").press()
-        const text = await search.getValue()
-        expect(text).toEqual("NOTHING HERE")
+        const text = await browser.asControl(selector1).getText()
+        expect(text).toBeTruthy()
 
+        await wdi5.goTo("#")
         const selector2 = {
             selector: {
-                id: "container-orderbrowser---master--masterHeaderTitle"
+                id: "container-orderbrowser---master--filterButton",
+                viewName: "sap.ui.demo.orderbrowser.view.Master"
             }
         }
-        const headerTitle = await browser.asControl(selector2)
-        const title = await headerTitle.getText()
-        expect(title).toMatch("(0)")
+        const icon = await browser.asControl(selector2).getIcon()
+        expect(icon).toEqual("sap-icon://filter")
     })
 })
