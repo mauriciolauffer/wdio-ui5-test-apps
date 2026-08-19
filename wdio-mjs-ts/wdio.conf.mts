@@ -1,19 +1,20 @@
-const { default: _ui5Service } = require("wdio-ui5-service");
-const ui5Service = new _ui5Service();
-const config = {
+// Import/require to test whether ESM/CJS modules are working as expected
+import _wdi5 from "wdio-ui5-service"
+
+export const config = {
     wdi5: {
         logLevel: "verbose"
     },
-    baseUrl: "https://ui5.sap.com/1.136.10/test-resources/sap/m/demokit/orderbrowser/webapp/test/mockServer.html",
+    baseUrl: "https://ui5.sap.com/1.136.21/test-resources/sap/m/demokit/orderbrowser/webapp/test/mockServer.html",
 
     services: ["ui5"],
-    specs: ["./*.test.cjs"],
+    specs: ["./*.test.{ts,mts}"],
     maxInstances: 1,
     capabilities: [
         {
             maxInstances: 1,
             browserName: "chrome",
-            // browserVersion: "stable",
+            //browserVersion: "stable",
             "goog:chromeOptions": {
                 args: process.argv.includes("--headless")
                     ? ["window-size=1440,800", "headless", "disable-gpu"]
@@ -27,5 +28,3 @@ const config = {
 
     framework: "mocha"
 }
-
-module.exports = { config }
