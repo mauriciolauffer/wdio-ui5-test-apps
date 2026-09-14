@@ -7,12 +7,11 @@
   "author": "j&s-soft GmbH",
   "type": "module",
   "scripts": {
-    "test": "run-s test:**",
+    "test": "pnpm run -s /^test:.*/",
     "test:js": "wdio run wdio.conf.js --headless",
     "test:mjs": "wdio run wdio.conf.mjs --headless"
   },
   "devDependencies": {
-    "npm-run-all2": "^8",
-    "wdio-ui5-service": "^3"
+    "wdio-ui5-service": "^3.0.12"
   }
 }
