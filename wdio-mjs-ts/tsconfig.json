@@ -3,6 +3,7 @@
     "noEmit": true,
     "strict": false,
     "skipLibCheck": true,
+    "allowJs": true,
     "target": "es2023",
     "module": "nodenext",
     "moduleResolution": "nodenext",
